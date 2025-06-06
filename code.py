@@ -214,30 +214,3 @@ print(f"✅ Final merged (and deduplicated) Excel written to: {OUTPUT_EXCEL}")
 # (b) If you’d rather have CSV, uncomment the next two lines instead:
 # merged_full.to_csv(OUTPUT_CSV, index=False)
 # print(f"✅ Final merged (and deduplicated) CSV written to: {OUTPUT_CSV}")
-
-
-# ─── 10) (OPTIONAL) HOW TO ADD A “PEOPLE” FILE ─────────────────────────────────────
-# If your professor later gives you “People.xlsx” or similar (containing
-# first/last name, email, etc. for each Investor ID), you can union join and
-# merge it just like we did above. For example:
-#
-#   PEOPLE_PATTERN = "people_*.xlsx"
-#   people_union = load_and_prefix(
-#       glob_pattern=PEOPLE_PATTERN,
-#       prefix="people.",
-#       file_type="people",
-#       header_row=HEADER_ROW_FOR_PEOPLE
-#   )
-#   # (Maybe drop duplicates in people_union by “people.Investor ID”)
-#   merged_with_people = pd.merge(
-#       merged_full,
-#       people_union,
-#       left_on="deals.Investor ID",      # or “map.Investor ID” if you hadn’t dropped that
-#       right_on="people.Investor ID",
-#       how="left"
-#   )
-#   # Then reorder columns again as needed, and save that new merged_with_people…
-#
-# But since you only asked for deals/investors/companies right now, the above
-# block can remain commented out until you actually have a People file.
-
