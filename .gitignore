@@ -1,1 +1,2 @@
-.xlsx
+# Ignore all Excel workbooks
+*.xlsx
